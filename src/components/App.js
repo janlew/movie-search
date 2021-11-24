@@ -10,6 +10,7 @@ const App = () => {
 	const loading = false;
 	const errorMessage = false;
 	const search = true;
+	const test = "Test";
 
 	if (loading && !errorMessage) {
 		return (
