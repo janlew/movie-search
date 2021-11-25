@@ -45,7 +45,7 @@ const App = () => {
 
 	useEffect(() => {
 		axios.get(MOVIE_URL).then((response) => {
-			console.log(response);
+			console.log(response.data.Search);
 			dispatch({
 				type: "SEARCH_MOVIES_SUCCESS",
 				payload: response.data.Search,

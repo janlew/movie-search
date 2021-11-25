@@ -9,12 +9,22 @@ const Movie = ({ movie }) => {
 
 	return (
 		<div className="flex">
-			<img className="h-20" src={poster} alt={`Movie: ${movie.Title}`} />
+			<a
+				href={`https://www.imdb.com/title/${movie.imdbID}/?ref_=fn_al_tt_1`}
+				target="_blank"
+			>
+				<img className="h-20" src={poster} alt={`Movie: ${movie.Title}`} />
+			</a>
 			<div className="h-16 flex justify-center items-top ml-2">
 				<div>
-					<h2 className="font-mono text-white text-center text-xl">
-						{movie.Title}
-					</h2>
+					<a
+						href={`https://www.imdb.com/title/${movie.imdbID}/?ref_=fn_al_tt_1`}
+						target="_blank"
+					>
+						<h2 className="font-mono text-white text-center text-xl">
+							{movie.Title}
+						</h2>
+					</a>
 					<div className="font-mono text-white text-sm">{movie.Type}</div>
 					<div className="font-mono text-white text-sm">{movie.Year}</div>
 				</div>
