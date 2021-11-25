@@ -41,16 +41,11 @@ const reducer = (state, action) => {
 };
 
 const App = () => {
-	// const [movies, setMovies] = useState([]);
-	// const [loading, setLoading] = useState(true);
-	// const [errorMessage, setErrorMessage] = useState(null);
-
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	useEffect(() => {
 		axios.get(MOVIE_URL).then((response) => {
-			// setMovies([response.data]);
-			// setLoading(false);
+			console.log(response);
 			dispatch({
 				type: "SEARCH_MOVIES_SUCCESS",
 				payload: response.data.Search,
@@ -62,34 +57,29 @@ const App = () => {
 		dispatch({
 			type: "SEARCH_MOVIES_REQUEST",
 		});
-		// setLoading(true);
-		// setErrorMessage(null);
 
 		axios
 			.get(`https://www.omdbapi.com/?s=${searchValue}&apikey=2080afd3`)
 			.then((response) => {
 				if (response.status === 200) {
-					//setMovies(response.data.Search);
 					dispatch({
 						type: "SEARCH_MOVIES_SUCCESS",
 						payload: response.data.Search,
 					});
 				} else {
-					//setErrorMessage("Klops");
 					dispatch({
 						type: "SEARCH_MOVIES_ERROR",
 						payload: "Klops",
 					});
 				}
-				//setLoading(false);
 			});
 	};
 
 	const { movies, errorMessage, loading } = state;
 
-	const renderMovies = movies.map((movie, index) => (
-		<Movie key={`${index}-${movie.Title}`} movie={movie} />
-	));
+	const renderMovies = movies
+		? movies.map((movie) => <Movie key={movie.imdbID} movie={movie} />)
+		: "No Results Found";
 
 	if (errorMessage) {
 		return (
@@ -107,7 +97,7 @@ const App = () => {
 				Look for the best movies!
 			</p>
 			<Content loading={loading} errorMessage={errorMessage}>
-				{renderMovies ? renderMovies : "BAD"}
+				{renderMovies}
 			</Content>
 		</div>
 	);

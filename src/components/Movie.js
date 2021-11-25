@@ -8,16 +8,17 @@ const Movie = ({ movie }) => {
 		movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
 
 	return (
-		<div className="mx-auto">
-			<div className="h-16 flex justify-center items-center">
-				<h2 className="font-mono text-white text-center text-xl">
-					{movie.Title}
-				</h2>
+		<div className="flex">
+			<img className="h-20" src={poster} alt={`Movie: ${movie.Title}`} />
+			<div className="h-16 flex justify-center items-top ml-2">
+				<div>
+					<h2 className="font-mono text-white text-center text-xl">
+						{movie.Title}
+					</h2>
+					<div className="font-mono text-white text-sm">{movie.Type}</div>
+					<div className="font-mono text-white text-sm">{movie.Year}</div>
+				</div>
 			</div>
-			<div className="flex justify-center">
-				<img className="" src={poster} alt={`Movie: ${movie.Title}`} />
-			</div>
-			<p className="font-mono text-white text-center">{movie.Year}</p>
 		</div>
 	);
 };

@@ -11,7 +11,7 @@ const Grid = ({ loading, errorMessage, children }) => {
 	}
 
 	return (
-		<div className="bg-purple-600 p-5 grid grid-cols-1 gap-4 justify-center rounded-xl border border-white md:grid-cols-3 xl:grid-cols-6">
+		<div className="bg-purple-600 p-5 grid grid-cols-1 gap-4 rounded-xl border border-white">
 			{children}
 		</div>
 	);
